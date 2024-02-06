@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+    <style>
+    label{
+        font-weight: 500;
+    }
+    </style>
+  <head>
+    <script type="module" src="/controller.js"></script>  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HS-Code-GPT Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type = "text/javascript" language = "javascript">
+        $(document).ready(function() {
+           $("#suggestHSCode").click(async function()  {
+                var description = $("#descriptionInput").val();
+              
+                    var suggestedHSCode = await getSuggestion(description);
+                    
+                    console.log('sHSC: '+suggestedHSCode);
+                    $("#harmonizedCode").val(suggestedHSCode);
+             
+                
+                
+           });
+        });
+     </script>
+</head>
+  <body>
+    <div class="container" style="height:10rem"></div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <h4>Enter item 1 details</h4>
+            <br>
+            <form>
+                <label for="descriptionInput">Description</label>  
+                <input type="input" class="form-control" id="descriptionInput" placeholder="What is it, made of, and used for?" value="">
+                <!-- <label style="font-size: .9rem; color:dimgray" for="descriptionInput">What is it? What is it made of? What is it used for?</label> -->
+                <br>
+                <label>Quantity</label>
+                <div class="input-group mb-4" style="margin-bottom:0px">
+                    <input type="text" class="form-control" aria-label="Value">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Each</button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Each</a></li>
+                            <li><a class="dropdown-item" href="#">Pieces</a></li>
+                            <li><a class="dropdown-item" href="#">Bundles</a></li>
+                            <li><a class="dropdown-item" href="#">Pounds</a></li>
+                            <li><a class="dropdown-item" href="#">Kilograms</a></li>
+                            <li><a class="dropdown-item" href="#">Grams</a></li>
+                            <li><a class="dropdown-item" href="#">Dozen</a></li>
+                        </ul>
+                </div>
+
+                <label for="value">Value</label>
+                <div class="input-group mb-4" id="value">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">USD $</button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">USD</a></li>
+                            <li><a class="dropdown-item" href="#">CAD</a></li>
+                        </ul>
+                    <input type="text" class="form-control" aria-label="Value">
+                    <span class="input-group-text">per unit</span>
+                </div>
+                <label for="countryOfOrigin">Country of Origin</label> 
+                <select class="form-select mb-4" id="countryOfOrigin">
+                    <option selected>United States</option>
+                    <option value="1">Canada</option>
+                    <option value="2">Mexico</option>
+                    <option value="3">China</option>
+                </select>
+
+                <label for="totalWeight">Weight</label>
+                <div class="input-group mb-4">
+                    <input type="text" class="form-control" aria-label="Weight" placeholder="">
+                    <span class="input-group-text">pounds (total)</span>
+                </div>
+
+                <label for="totalWeight">Harmonized Code</label>
+                <div class="input-group mb-4">
+                    <input type="text" id="harmonizedCode" class="form-control" aria-label="Weight" placeholder="">
+                    <button class="btn btn-outline-secondary" type="button" id="suggestHSCode" onclick="
+      
+                     "><i class="bi bi-binoculars-fill"></i> Suggest</button>
+                </div>
+                
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>

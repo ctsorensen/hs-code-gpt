@@ -1,0 +1,4 @@
+{
+    "watch": ["/public/app.js", "index.html", "/public/hs-code-ai.js", "/public/controller.js"],
+    "ext": "js, css"
+  }
