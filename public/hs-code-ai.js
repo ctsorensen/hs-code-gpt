@@ -3,8 +3,9 @@ import OpenAI from 'openai'
 const openai = new OpenAI();
 
 export default async function GptCall(descriptionInput) {
-  console.log('input: '+descriptionInput.toString());
+  //console.log('input: '+descriptionInput.toString());
   var prompt = 'What is the 6 digit harmonized code for: ' + descriptionInput +'? answer with only 6 digits in this format: ####.##';
+
   const completion = await openai.chat.completions.create({
     messages: [ 
       {role: "system", content: "You are a customs classification and harmonized code expert."},
@@ -13,7 +14,7 @@ export default async function GptCall(descriptionInput) {
     temperature: 0.1
   });
 
-  console.log(completion.choices[0]);
+  //console.log(completion.choices[0]);
 
   var hscode = completion.choices[0].message.content;
 
