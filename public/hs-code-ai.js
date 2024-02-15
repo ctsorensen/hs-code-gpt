@@ -4,6 +4,7 @@ const openai = new OpenAI();
 
 export default async function GptCall(descriptionInput) {
   //console.log('input: '+descriptionInput.toString());
+  
   var prompt = 'What is the 6 digit harmonized code for: ' + descriptionInput +'? answer with only 6 digits in this format: ####.##';
 
   const completion = await openai.chat.completions.create({
@@ -21,6 +22,3 @@ export default async function GptCall(descriptionInput) {
   return hscode;
 
 }
-
-
-

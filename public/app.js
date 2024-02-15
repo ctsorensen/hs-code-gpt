@@ -22,10 +22,7 @@ app.get('/suggest', async function(req, res){
 });
 
 
-// app.use(Express.static("/Users/tylersorensen/Development/hs-code-gpt/js"));
 app.use(Express.static('public'));
-// app.use(Express.static('node_modules'));
 
 app.listen(PORT, () => {console.log(`Server is now listening on port ${PORT}`)});
 
-//http://localhost:8080/suggest?iphone
